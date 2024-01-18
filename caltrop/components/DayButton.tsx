@@ -9,24 +9,6 @@ type DayButtonProps = {
     onStateChange?: (state: DayButtonState) => void;
 }
 
-const styles = StyleSheet.create({
-    button: {
-        height: 30,
-        width: 50,
-        minHeight: 30,
-        minWidth: 50,
-        borderRadius: Math.round(50 / 2),
-        alignItems: 'center',
-        justifyContent: 'center',
-        margin: 2,
-    },
-    text: {
-        fontSize: 10,
-        marginHorizontal: 0,
-        marginVertical: 0
-    }
-})
-
 const DayButton = (props: DayButtonProps) => {
     const [state, setState] = useState<DayButtonState>('off');
     return (<Button
@@ -45,4 +27,22 @@ const DayButton = (props: DayButtonProps) => {
     </Button>);
 }
 
-export { DayButton };
+const styles = StyleSheet.create({
+    button: {
+        height: 30,
+        width: 50,
+        minHeight: 30,
+        minWidth: 50,
+        borderRadius: Math.round(50 / 2),
+        alignItems: 'center',
+        justifyContent: 'center',
+        margin: 2,
+    },
+    text: {
+        fontSize: 10,
+        marginHorizontal: 0,
+        marginVertical: 0
+    }
+})
+
+export { DayButton, DayButtonProps, DayButtonState };

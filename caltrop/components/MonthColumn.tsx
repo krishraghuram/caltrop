@@ -1,16 +1,14 @@
-import { DayButton } from './DayButton';
+import { DayButton, DayButtonState } from './DayButton';
 import { ScrollView, View } from 'react-native';
 import { Text } from 'react-native-paper';
 
-type DayButtonState = 'on' | 'off';
-
-type MonthProps = {
+type MonthColumnProps = {
     title: string;
     days: number;
     onStateChange?: (date: number, state: DayButtonState) => void;
 }
 
-const MonthColumn = (props: MonthProps) => {
+const MonthColumn = (props: MonthColumnProps) => {
     return (
         <View style={{ flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
             <Text variant='titleMedium'>{props.title}</Text>
@@ -29,4 +27,4 @@ const MonthColumn = (props: MonthProps) => {
     );
 }
 
-export { MonthColumn };
+export { MonthColumn, MonthColumnProps };
