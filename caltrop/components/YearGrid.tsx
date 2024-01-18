@@ -1,6 +1,7 @@
 import { DayButtonState } from './DayButton';
 import { ScrollView } from 'react-native';
 import { MonthColumn } from './MonthColumn';
+import { Text } from 'react-native-paper';
 
 const MONTHS = {
     "Jan": 31,
@@ -25,28 +26,30 @@ type YearGridProps = {
 
 const YearGrid = (props: YearGridProps) => {
     return (
-        <ScrollView
-            persistentScrollbar={true}
-            contentContainerStyle={{
-                width: '100%',
-                flexDirection: 'row',
-                alignItems: 'center',
-                justifyContent: 'space-evenly',
-                paddingVertical: 30,
-                paddingHorizontal: 20,
-            }}
-        >
-            {
-                Object.entries(MONTHS).map(([month, days]) => {
-                    return (
-                        <MonthColumn
-                            title={month}
-                            days={days}
-                            onStateChange={(date, state) => props?.onStateChange?.(month as Month, date, state)} />
-                    )
-                })
-            }
-        </ScrollView>
+        <>
+            <Text variant='headlineLarge'>{new Date().getFullYear()}</Text>
+            <ScrollView
+                persistentScrollbar={true}
+                contentContainerStyle={{
+                    width: '100%',
+                    flexDirection: 'row',
+                    alignItems: 'center',
+                    justifyContent: 'space-evenly',
+                }}
+            >
+                {
+                    Object.entries(MONTHS).map(([month, days]) => {
+                        return (
+                            <MonthColumn
+                                key={month}
+                                title={month}
+                                days={days}
+                                onStateChange={(date, state) => props?.onStateChange?.(month as Month, date, state)} />
+                        )
+                    })
+                }
+            </ScrollView>
+        </>
     );
 }
 
