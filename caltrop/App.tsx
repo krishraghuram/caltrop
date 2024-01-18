@@ -8,7 +8,14 @@ export default function App() {
       <StatusBar style="auto" />
       <ScrollView
         persistentScrollbar={true}
-        contentContainerStyle={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'center', padding: 10 }}
+        contentContainerStyle={{
+          width: '100%',
+          flexDirection: 'row',
+          alignItems: 'center',
+          justifyContent: 'space-evenly',
+          paddingVertical: 30,
+          paddingHorizontal: 20,
+        }}
       >
         <MonthColumn title="jan" days={31} onStateChange={(date, state) => console.log(date, state)}></MonthColumn>
         <MonthColumn title="feb" days={28} onStateChange={(date, state) => console.log(date, state)}></MonthColumn>

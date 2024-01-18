@@ -15,7 +15,7 @@ type MonthProps = {
 const MonthColumn = (props: MonthProps) => {
     return (
         <View style={{ flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
-            <Text variant='titleLarge'>{props.title}</Text>
+            <Text variant='titleMedium'>{props.title}</Text>
             <ScrollView scrollEnabled={false}>
                 {Array.from({ length: props.days }, (x, i) => i + 1).map((item => {
                     return (
