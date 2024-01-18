@@ -1,23 +1,6 @@
 import { DayButtonState } from './DayButton';
-import { ScrollView, View } from 'react-native';
+import { ScrollView } from 'react-native';
 import { MonthColumn } from './MonthColumn';
-
-// type Month = "jan" | "feb" | "mar" | "apr" | "may" | "june" | "july" | "aug" | "sept" | "oct" | "nov" | "dec";
-
-// enum Month {
-//     Jan = "Jan",
-//     Feb = "Feb",
-//     Mar = "Mar",
-//     Apr = "Apr",
-//     May = "May",
-//     June = "June",
-//     July = "July",
-//     Aug = "Aug",
-//     Sept = "Sept",
-//     Oct = "Oct",
-//     Nov = "Nov",
-//     Dec = "Dec",
-// }
 
 const MONTHS = {
     "Jan": 31,
