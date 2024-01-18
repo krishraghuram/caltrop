@@ -5,29 +5,31 @@ import { Text } from 'react-native-paper';
 
 const MONTHS = {
     "Jan": 31,
-    "Feb": 28,
-    "Mar": 31,
-    "Apr": 30,
-    "May": 31,
-    "June": 30,
-    "July": 31,
-    "Aug": 31,
-    "Sept": 30,
-    "Oct": 31,
-    "Nov": 30,
-    "Dec": 31,
+    // "Feb": 28,
+    // "Mar": 31,
+    // "Apr": 30,
+    // "May": 31,
+    // "June": 30,
+    // "July": 31,
+    // "Aug": 31,
+    // "Sept": 30,
+    // "Oct": 31,
+    // "Nov": 30,
+    // "Dec": 31,
 }
 
 type Month = keyof typeof MONTHS;
 
 type YearGridProps = {
+    title: string;
     onStateChange?: (month: Month, date: number, state: DayButtonState) => void;
 }
 
 const YearGrid = (props: YearGridProps) => {
+    console.log("Rendering Year:" + props.title);
     return (
         <>
-            <Text variant='headlineLarge'>{new Date().getFullYear()}</Text>
+            <Text variant='headlineLarge'>{props.title}</Text>
             <ScrollView
                 persistentScrollbar={true}
                 contentContainerStyle={{
