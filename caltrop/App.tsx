@@ -3,29 +3,72 @@ import { StyleSheet, View } from 'react-native';
 import { YearGrid } from './components/YearGrid';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { Text, BottomNavigation } from 'react-native-paper';
-import { NavigationContainer } from '@react-navigation/native';
+import { Text, BottomNavigation, Icon } from 'react-native-paper';
+import { CommonActions, NavigationContainer } from '@react-navigation/native';
+import { useMemo } from 'react';
+import type { BottomTabScreenProps } from '@react-navigation/bottom-tabs';
 
 const Tab = createBottomTabNavigator();
 
-function YearTab({ route, navigation }) {
-  return (
+enum TabNames {
+  Workout = "Workout",
+  Food = "Food",
+}
+
+const TAB_ICONS = {
+  [TabNames.Workout]: 'dumbbell',
+  [TabNames.Food]: 'food-apple',
+}
+
+// TODO: remove any
+const YearTab = ({ route, navigation }: any) => {
+  return useMemo(() => (
     <SafeAreaView style={styles.container}>
       <StatusBar style="auto" />
       <YearGrid
-        title={new Date().getFullYear().toString() + " - " + route.params.title}
+        title={new Date().getFullYear().toString() + " - " + route.name}
         onStateChange={(month, date, state) => console.log(month, date, state)}
       />
     </SafeAreaView >
-  );
+  ), [route.name]);
 }
 
 export default function App() {
   return (
     <NavigationContainer>
-      <Tab.Navigator screenOptions={{ headerShown: false }}>
-        <Tab.Screen name="Workout" component={YearTab} initialParams={{ title: "Workout" }}></Tab.Screen>
-        <Tab.Screen name="Food" component={YearTab} initialParams={{ title: "Food" }}></Tab.Screen>
+      <Tab.Navigator
+        screenOptions={{ headerShown: false, lazy: false }}
+        tabBar={({ navigation, state, descriptors, insets }) => (
+          <BottomNavigation.Bar
+            navigationState={state}
+            safeAreaInsets={insets}
+            onTabPress={({ route, preventDefault }) => {
+              const event = navigation.emit({
+                type: 'tabPress',
+                target: route.key,
+                canPreventDefault: true,
+              });
+
+              if (event.defaultPrevented) {
+                preventDefault();
+              } else {
+                navigation.dispatch({
+                  ...CommonActions.navigate(route.name, route.params),
+                  target: state.key,
+                });
+              }
+            }}
+            renderIcon={({ route, focused, color }) => {
+              return (<Icon source={TAB_ICONS[route.name as TabNames]} size={20} />);
+            }}
+            getLabelText={({ route }) => {
+              return route.name;
+            }}
+          />
+        )}
+      >
+        <Tab.Screen name={TabNames.Workout} component={YearTab}></Tab.Screen>
+        <Tab.Screen name={TabNames.Food} component={YearTab}></Tab.Screen>
       </Tab.Navigator>
     </NavigationContainer>
   );
