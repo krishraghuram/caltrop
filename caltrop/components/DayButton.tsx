@@ -11,11 +11,11 @@ type DayButtonProps = {
 
 const styles = StyleSheet.create({
     button: {
-        height: 55,
-        width: 55,
-        minHeight: 55,
-        minWidth: 55,
-        borderRadius: Math.round(65 / 2),
+        height: 35,
+        width: 50,
+        minHeight: 35,
+        minWidth: 50,
+        borderRadius: Math.round(50 / 2),
         alignItems: 'center',
         justifyContent: 'center',
         margin: 2,
