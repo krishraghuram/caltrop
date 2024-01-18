@@ -1,12 +1,11 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, View } from 'react-native';
+import { StyleSheet } from 'react-native';
 import { YearGrid } from './components/YearGrid';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { Text, BottomNavigation, Icon } from 'react-native-paper';
+import { BottomNavigation, Icon } from 'react-native-paper';
 import { CommonActions, NavigationContainer } from '@react-navigation/native';
 import { useMemo } from 'react';
-import type { BottomTabScreenProps } from '@react-navigation/bottom-tabs';
 
 const Tab = createBottomTabNavigator();
 
@@ -27,9 +26,11 @@ const YearTab = ({ route, navigation }: any) => {
       <StatusBar style="auto" />
       <YearGrid
         title={new Date().getFullYear().toString() + " - " + route.name}
-        onStateChange={(month, date, state) => console.log(month, date, state)}
+        onStateChange={(month, date, state) => {
+          console.log(month, date, state);
+        }}
       />
-    </SafeAreaView >
+    </SafeAreaView>
   ), [route.name]);
 }
 
