@@ -27,22 +27,16 @@ const styles = StyleSheet.create({
     }
 })
 
-const onPress = (
-    props: DayButtonProps,
-    state: DayButtonState,
-    setState: React.Dispatch<React.SetStateAction<DayButtonState>>
-) => {
-    Vibration.vibrate([0, 250]);
-    const newstate = state == 'off' ? 'on' : 'off';
-    setState(newstate);
-    props?.onStateChange?.(newstate);
-}
-
 const DayButton = (props: DayButtonProps) => {
     const [state, setState] = useState<DayButtonState>('off');
     return (<Button
         mode={state == 'off' ? 'outlined' : 'contained'}
-        onPress={() => { onPress(props, state, setState) }}
+        onPress={() => {
+            Vibration.vibrate([0, 250]);
+            const newstate = state == 'off' ? 'on' : 'off';
+            setState(newstate);
+            props?.onStateChange?.(newstate);
+        }}
         style={styles.button}
         contentStyle={styles.button}
         labelStyle={styles.text}
