@@ -1,7 +1,5 @@
-import { useState } from 'react';
 import { DayButton } from './DayButton';
-import { FlatList, ScrollView, View } from 'react-native';
-import { StyleSheet } from "react-native";
+import { ScrollView, View } from 'react-native';
 import { Text } from 'react-native-paper';
 
 type DayButtonState = 'on' | 'off';
