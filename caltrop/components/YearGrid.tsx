@@ -21,13 +21,14 @@ const MONTHS = {
 type Month = keyof typeof MONTHS;
 
 type YearGridProps = {
+    title: string;
     onStateChange?: (month: Month, date: number, state: DayButtonState) => void;
 }
 
 const YearGrid = (props: YearGridProps) => {
     return (
         <>
-            <Text variant='headlineLarge'>{new Date().getFullYear()}</Text>
+            <Text variant='headlineLarge'>{props.title}</Text>
             <ScrollView
                 persistentScrollbar={true}
                 contentContainerStyle={{
