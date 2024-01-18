@@ -11,15 +11,19 @@ type DayButtonProps = {
 
 const styles = StyleSheet.create({
     button: {
-        height: 65,
-        width: 65,
+        height: 55,
+        width: 55,
+        minHeight: 55,
+        minWidth: 55,
         borderRadius: Math.round(65 / 2),
         alignItems: 'center',
         justifyContent: 'center',
         margin: 2,
     },
     text: {
-        fontSize: 12
+        fontSize: 10,
+        marginHorizontal: 0,
+        marginVertical: 0
     }
 })
 
