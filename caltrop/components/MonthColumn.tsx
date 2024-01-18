@@ -12,24 +12,12 @@ type MonthProps = {
     onStateChange?: (date: number, state: DayButtonState) => void;
 }
 
-const styles = StyleSheet.create({
-    button: {
-        height: 65,
-        width: 65,
-        borderRadius: Math.round(65 / 2),
-        alignItems: 'center',
-        justifyContent: 'center'
-    },
-    text: {
-        fontSize: 12
-    }
-})
-
 const MonthColumn = (props: MonthProps) => {
     return (
-        <View style={{ flex: 1, flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
+        <View style={{ flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
             <Text variant='titleLarge'>{props.title}</Text>
             <FlatList
+                scrollEnabled={false}
                 data={Array.from({ length: props.days }, (x, i) => i + 1)}
                 renderItem={({ item }) => {
                     return (<DayButton
