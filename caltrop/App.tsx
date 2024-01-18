@@ -20,7 +20,7 @@ const TAB_ICONS = {
   [TabNames.Food]: 'food-apple',
 }
 
-// TODO: remove any
+// TODO: remove "any"
 const YearTab = ({ route, navigation }: any) => {
   return useMemo(() => (
     <SafeAreaView style={styles.container}>
